@@ -1,0 +1,18 @@
+C:\Users\Michael\AppData\Local\Temporary Projects\Budgeteer\bin\Debug\Budgeteer.exe.config
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\Budgeteer.exe.config
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\Budgeteer.exe
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\Budgeteer.pdb
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\EntityFramework.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\System.Data.SQLite.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\EntityFramework.xml
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\System.Data.SQLite.xml
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\Budgeteer.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\Budgeteer.frmMain.resources
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\Budgeteer.Properties.Resources.resources
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\Budgeteer.csproj.GenerateResource.Cache
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\Budgeteer.exe
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\Budgeteer.pdb

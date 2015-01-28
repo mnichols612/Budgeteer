@@ -1,0 +1,13 @@
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\Budgeteer.exe.config
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\Budgeteer.exe
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\Budgeteer.pdb
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\UI.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\Budgeteer.frmMain.resources
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\Budgeteer.Properties.Resources.resources
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\UI.csproj.GenerateResource.Cache
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\Budgeteer.exe
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\obj\Debug\Budgeteer.pdb
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\Entities.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\Logic.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\Entities.pdb
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Budgeteer\bin\Debug\Logic.pdb

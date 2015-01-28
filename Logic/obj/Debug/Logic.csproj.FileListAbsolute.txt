@@ -1,0 +1,9 @@
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug\Logic.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug\Logic.pdb
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\obj\Debug\Logic.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\obj\Debug\Logic.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\obj\Debug\Logic.pdb
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug\Data.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug\Entities.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug\Data.pdb
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug\Entities.pdb
