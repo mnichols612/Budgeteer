@@ -168,6 +168,7 @@
             this.btnEditExpense.TabIndex = 9;
             this.btnEditExpense.Text = "Edit Expense";
             this.btnEditExpense.UseVisualStyleBackColor = true;
+            this.btnEditExpense.Click += new System.EventHandler(this.btnEditExpense_Click);
             // 
             // lblP
             // 

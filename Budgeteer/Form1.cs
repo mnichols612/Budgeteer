@@ -59,8 +59,8 @@ namespace Budgeteer
                 {
                     string[] split = validationstring.Split(',');
 
-                    amount = Convert.ToDouble(split[0]);
-                    percent = Convert.ToDouble(split[1]);
+                    amount = Convert.ToDouble(split[1]);
+                    percent = Convert.ToDouble(split[2]);
 
                     if (percent != -1)
                     {
@@ -72,6 +72,33 @@ namespace Budgeteer
                     BudgetItems.BudgetItemsList.Add(item);
                     RefreshBudgetListView();
                 }
+            }
+        }
+
+        private void btnEditExpense_Click(object sender, EventArgs e)
+        {
+            string validationString = ValidateBudgetTextBoxes();
+            bool itemExists = false;
+
+            if (validationString != "")
+            {
+                string[] split=validationString.Split(',');
+                foreach (BudgetItem item in BudgetItems.BudgetItemsList)
+                {
+                    if (item.Name == split[0])
+                    {
+                        itemExists = true;
+
+                        item.Price = Convert.ToDouble(split[1]);
+                        item.Percent = Convert.ToDouble(split[2]);
+                    }
+                }
+
+                if (itemExists == false)
+                {
+                    MessageBox.Show("Item does not exist.");
+                }
+                RefreshBudgetListView();
             }
         }
 
@@ -129,7 +156,12 @@ namespace Budgeteer
         {
             double amount=0, percent=-1;
 
-            if (txtAmount.Text == "" && txtPercent.Text == "")
+            if (txtExpense.Text == "")
+            {
+                MessageBox.Show("Please enter a name for the expense.");
+                return "";
+            }
+            else if (txtAmount.Text == "" && txtPercent.Text == "")
             {
                 MessageBox.Show("Please enter a valid amount or percent");
                 return "";
@@ -146,7 +178,7 @@ namespace Budgeteer
             }
             else
             {
-                return amount.ToString()+","+percent.ToString();
+                return txtExpense.Text+","+amount.ToString()+","+percent.ToString();
             }
         }
 
