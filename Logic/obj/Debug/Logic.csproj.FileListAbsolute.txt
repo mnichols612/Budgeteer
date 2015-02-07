@@ -7,3 +7,5 @@ C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug
 C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug\Entities.dll
 C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug\Data.pdb
 C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug\Entities.pdb
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug\System.Data.SQLite.dll
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\Budgeteer\Logic\bin\Debug\System.Data.SQLite.xml

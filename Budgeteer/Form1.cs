@@ -21,6 +21,11 @@ namespace Budgeteer
             InitializeComponent();
         }
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            Database.SetupSQLite();
+        }
+
         #region BudgetTab
 
         private void btnEditTotal_Click(object sender, EventArgs e)
@@ -127,6 +132,65 @@ namespace Budgeteer
             }
         }
 
+        private void btnSaveBudget_Click(object sender, EventArgs e)
+        {
+            string items="", amounts="";
+            string budgetName = SaveBudgetPrompt.ShowDialog();
+
+            foreach (BudgetItem item in BudgetItems.BudgetItemsList)
+            {
+                if (items == "")
+                {
+                    items += item.Name;
+                }
+                else
+                {
+                    items += "," + item.Name;
+                }
+
+                if (item.Percent == -1)
+                {
+                    if (amounts == "")
+                    {
+                        amounts += item.Price;
+                    }
+                    else
+                    {
+                        amounts += "," + item.Price;
+                    }
+                }
+                else
+                {
+                    if (amounts == "")
+                    {
+                        amounts += "p" + item.Percent;
+                    }
+                    else
+                    {
+                        amounts += ",p" + item.Percent;
+                    }
+                }
+            }
+
+            Database.SaveBudget(budgetName, total,"items","amounts");
+            Database.RetrieveBudgets();
+        }
+
+        private void btnResetBudget_Click(object sender, EventArgs e)
+        {
+            total = 0;
+            BudgetItems.BudgetItemsList.Clear();
+            RefreshBudgetListView();
+        }
+
+        private void btnLoadBudget_Click(object sender, EventArgs e)
+        {
+            foreach (string budget in Database.RetrieveBudgets())
+            {
+                cboBudgets.Items.Add(budget);
+            }
+        }
+
         private void lvwBudget_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClearBudgetTextBoxes();
@@ -206,6 +270,8 @@ namespace Budgeteer
                 }
             }
         }
+
+
     }
         #endregion
 

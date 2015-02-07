@@ -36,6 +36,7 @@
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.tcTabs = new System.Windows.Forms.TabControl();
             this.tpBudget = new System.Windows.Forms.TabPage();
+            this.btnSaveBudget = new System.Windows.Forms.Button();
             this.btnRemoveExpense = new System.Windows.Forms.Button();
             this.grpExpense = new System.Windows.Forms.GroupBox();
             this.btnEditExpense = new System.Windows.Forms.Button();
@@ -51,11 +52,18 @@
             this.chAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chRemaining = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tpBudgetHistory = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.tpItemHistory = new System.Windows.Forms.TabPage();
+            this.btnResetBudget = new System.Windows.Forms.Button();
+            this.grpLoadBudget = new System.Windows.Forms.GroupBox();
+            this.btnLoadBudget = new System.Windows.Forms.Button();
+            this.cboBudgets = new System.Windows.Forms.ComboBox();
             this.tcTabs.SuspendLayout();
             this.tpBudget.SuspendLayout();
             this.grpExpense.SuspendLayout();
             this.grpTotal.SuspendLayout();
+            this.tpBudgetHistory.SuspendLayout();
+            this.grpLoadBudget.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTotal
@@ -119,6 +127,9 @@
             // 
             // tpBudget
             // 
+            this.tpBudget.Controls.Add(this.grpLoadBudget);
+            this.tpBudget.Controls.Add(this.btnResetBudget);
+            this.tpBudget.Controls.Add(this.btnSaveBudget);
             this.tpBudget.Controls.Add(this.btnRemoveExpense);
             this.tpBudget.Controls.Add(this.grpExpense);
             this.tpBudget.Controls.Add(this.grpTotal);
@@ -131,9 +142,19 @@
             this.tpBudget.Text = "Budget";
             this.tpBudget.UseVisualStyleBackColor = true;
             // 
+            // btnSaveBudget
+            // 
+            this.btnSaveBudget.Location = new System.Drawing.Point(389, 539);
+            this.btnSaveBudget.Name = "btnSaveBudget";
+            this.btnSaveBudget.Size = new System.Drawing.Size(117, 23);
+            this.btnSaveBudget.TabIndex = 4;
+            this.btnSaveBudget.Text = "Save Budget";
+            this.btnSaveBudget.UseVisualStyleBackColor = true;
+            this.btnSaveBudget.Click += new System.EventHandler(this.btnSaveBudget_Click);
+            // 
             // btnRemoveExpense
             // 
-            this.btnRemoveExpense.Location = new System.Drawing.Point(524, 539);
+            this.btnRemoveExpense.Location = new System.Drawing.Point(526, 539);
             this.btnRemoveExpense.Name = "btnRemoveExpense";
             this.btnRemoveExpense.Size = new System.Drawing.Size(116, 23);
             this.btnRemoveExpense.TabIndex = 3;
@@ -270,6 +291,7 @@
             // 
             // tpBudgetHistory
             // 
+            this.tpBudgetHistory.Controls.Add(this.listView1);
             this.tpBudgetHistory.Location = new System.Drawing.Point(4, 22);
             this.tpBudgetHistory.Name = "tpBudgetHistory";
             this.tpBudgetHistory.Padding = new System.Windows.Forms.Padding(3);
@@ -277,6 +299,14 @@
             this.tpBudgetHistory.TabIndex = 1;
             this.tpBudgetHistory.Text = "Budget History";
             this.tpBudgetHistory.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(9, 6);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(779, 293);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // tpItemHistory
             // 
@@ -287,6 +317,45 @@
             this.tpItemHistory.Text = "Item History";
             this.tpItemHistory.UseVisualStyleBackColor = true;
             // 
+            // btnResetBudget
+            // 
+            this.btnResetBudget.Location = new System.Drawing.Point(663, 539);
+            this.btnResetBudget.Name = "btnResetBudget";
+            this.btnResetBudget.Size = new System.Drawing.Size(116, 23);
+            this.btnResetBudget.TabIndex = 5;
+            this.btnResetBudget.Text = "Reset Budget";
+            this.btnResetBudget.UseVisualStyleBackColor = true;
+            this.btnResetBudget.Click += new System.EventHandler(this.btnResetBudget_Click);
+            // 
+            // grpLoadBudget
+            // 
+            this.grpLoadBudget.Controls.Add(this.cboBudgets);
+            this.grpLoadBudget.Controls.Add(this.btnLoadBudget);
+            this.grpLoadBudget.Location = new System.Drawing.Point(9, 406);
+            this.grpLoadBudget.Name = "grpLoadBudget";
+            this.grpLoadBudget.Size = new System.Drawing.Size(289, 104);
+            this.grpLoadBudget.TabIndex = 6;
+            this.grpLoadBudget.TabStop = false;
+            this.grpLoadBudget.Text = "Load Budget";
+            // 
+            // btnLoadBudget
+            // 
+            this.btnLoadBudget.Location = new System.Drawing.Point(82, 60);
+            this.btnLoadBudget.Name = "btnLoadBudget";
+            this.btnLoadBudget.Size = new System.Drawing.Size(105, 23);
+            this.btnLoadBudget.TabIndex = 0;
+            this.btnLoadBudget.Text = "Load Budget";
+            this.btnLoadBudget.UseVisualStyleBackColor = true;
+            this.btnLoadBudget.Click += new System.EventHandler(this.btnLoadBudget_Click);
+            // 
+            // cboBudgets
+            // 
+            this.cboBudgets.FormattingEnabled = true;
+            this.cboBudgets.Location = new System.Drawing.Point(16, 33);
+            this.cboBudgets.Name = "cboBudgets";
+            this.cboBudgets.Size = new System.Drawing.Size(235, 21);
+            this.cboBudgets.TabIndex = 1;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,12 +364,15 @@
             this.Controls.Add(this.tcTabs);
             this.Name = "frmMain";
             this.Text = "Budgeteer";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.tcTabs.ResumeLayout(false);
             this.tpBudget.ResumeLayout(false);
             this.grpExpense.ResumeLayout(false);
             this.grpExpense.PerformLayout();
             this.grpTotal.ResumeLayout(false);
             this.grpTotal.PerformLayout();
+            this.tpBudgetHistory.ResumeLayout(false);
+            this.grpLoadBudget.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -331,6 +403,12 @@
         private System.Windows.Forms.TabPage tpItemHistory;
         private System.Windows.Forms.Button btnRemoveExpense;
         private System.Windows.Forms.Button btnEditExpense;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button btnSaveBudget;
+        private System.Windows.Forms.Button btnResetBudget;
+        private System.Windows.Forms.GroupBox grpLoadBudget;
+        private System.Windows.Forms.ComboBox cboBudgets;
+        private System.Windows.Forms.Button btnLoadBudget;
     }
 }
 

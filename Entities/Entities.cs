@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
+
     public class BudgetItems
     {
         public static readonly List<BudgetItem> BudgetItemsList = new List<BudgetItem>();
