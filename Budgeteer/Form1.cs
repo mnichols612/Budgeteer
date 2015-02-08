@@ -24,6 +24,7 @@ namespace Budgeteer
         private void frmMain_Load(object sender, EventArgs e)
         {
             Database.SetupSQLite();
+            RefreshLoadBudgetList();
         }
 
         #region BudgetTab
@@ -172,8 +173,8 @@ namespace Budgeteer
                 }
             }
 
-            Database.SaveBudget(budgetName, total,"items","amounts");
-            Database.RetrieveBudgets();
+            Database.SaveBudget(budgetName, total,items,amounts);
+            RefreshLoadBudgetList();
         }
 
         private void btnResetBudget_Click(object sender, EventArgs e)
@@ -185,10 +186,6 @@ namespace Budgeteer
 
         private void btnLoadBudget_Click(object sender, EventArgs e)
         {
-            foreach (string budget in Database.RetrieveBudgets())
-            {
-                cboBudgets.Items.Add(budget);
-            }
         }
 
         private void lvwBudget_SelectedIndexChanged(object sender, EventArgs e)
@@ -271,6 +268,13 @@ namespace Budgeteer
             }
         }
 
+        private void RefreshLoadBudgetList()
+        {
+            foreach (string budget in Database.RetrieveBudgets())
+            {
+                cboBudgets.Items.Add(budget);
+            }
+        }
 
     }
         #endregion

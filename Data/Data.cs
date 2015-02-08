@@ -28,6 +28,7 @@ namespace Data
 
         public static void CreateTables()
         {
+            connection.Open();
             string createBudgetsTable = "create table if not exists Budgets(Name text, Total double, Items text, Amounts text)";
             SQLiteCommand create = new SQLiteCommand(createBudgetsTable, connection);
             create.ExecuteNonQuery();
@@ -35,6 +36,7 @@ namespace Data
             string createExpensesTable = "create table if not exists Expenses(Name text, Price double)";
             create = new SQLiteCommand(createExpensesTable, connection);
             create.ExecuteNonQuery();
+            connection.Close();
         }
         #endregion
 
@@ -42,8 +44,13 @@ namespace Data
 
         public static void AddBudget(string name, double total, string items, string amounts)
         {
-            string insert = "insert into Budgets(Name, Total, Items, Amounts) values (" + name + ", " + total + ", " + items + ", " + amounts + ")";
+            string insert = "insert into Budgets(Name, Total, Items, Amounts) values (\"" + name + "\", " + total + ", \"" + items + "\", \"" + amounts + "\")";
+
+            connection.Open();
             SQLiteCommand insertRow = new SQLiteCommand(insert, connection);
+            
+            //claims Budget table does not exist
+            insertRow.ExecuteNonQuery(CommandBehavior.CloseConnection);
         }
 
         #endregion
@@ -63,7 +70,6 @@ namespace Data
             {
                 budgets.Add(reader["Name"].ToString());
             }
-
             connection.Close();
         }
 
