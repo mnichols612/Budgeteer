@@ -28,6 +28,10 @@ namespace Logic
             SQLite.AddBudget(name, total, items, amounts);
         }
 
-
+        public static void LoadBudget(string name)
+        {
+            Budget.BudgetItemsList.Clear();
+            SQLite.GetBudget(name);
+        }
     }
 }

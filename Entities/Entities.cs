@@ -7,13 +7,18 @@ using System.Threading.Tasks;
 namespace Entities
 {
 
-    public class BudgetItems
+    public class Budget
     {
         public static readonly List<BudgetItem> BudgetItemsList = new List<BudgetItem>();
+
+        public static double total;
     }
 
     public abstract class Expense
     {
+        public Expense()
+        { }
+
         public Expense(string name, double price)
         {
             Name=name;
@@ -27,6 +32,9 @@ namespace Entities
 
     public class BudgetItem:Expense
     {
+        public BudgetItem()
+        { }
+
         public BudgetItem(string name, double price, double percent)
             :base(name, price)
         {

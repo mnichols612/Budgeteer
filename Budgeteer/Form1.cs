@@ -14,7 +14,7 @@ namespace Budgeteer
 {
     public partial class frmMain : Form
     {
-        double total, remaining;
+        double remaining;
 
         public frmMain()
         {
@@ -31,7 +31,7 @@ namespace Budgeteer
 
         private void btnEditTotal_Click(object sender, EventArgs e)
         {
-            if (!double.TryParse(txtTotal.Text, out total))
+            if (!double.TryParse(txtTotal.Text, out Budget.total))
             {
                 MessageBox.Show("Total must be a number with no more than 2 decimal places.");
             }
@@ -48,7 +48,7 @@ namespace Budgeteer
             string expense;
             expense = txtExpense.Text;
 
-            foreach (BudgetItem item in BudgetItems.BudgetItemsList)
+            foreach (BudgetItem item in Budget.BudgetItemsList)
             {
                 if (item.Name == expense)
                 {
@@ -70,12 +70,12 @@ namespace Budgeteer
 
                     if (percent != -1)
                     {
-                        amount = total / 100 * percent;
+                        amount = Budget.total / 100 * percent;
                     }
 
                     BudgetItem item = new BudgetItem(expense, amount, percent);
 
-                    BudgetItems.BudgetItemsList.Add(item);
+                    Budget.BudgetItemsList.Add(item);
                     RefreshBudgetListView();
                 }
             }
@@ -89,7 +89,7 @@ namespace Budgeteer
             if (validationString != "")
             {
                 string[] split=validationString.Split(',');
-                foreach (BudgetItem item in BudgetItems.BudgetItemsList)
+                foreach (BudgetItem item in Budget.BudgetItemsList)
                 {
                     if (item.Name == split[0])
                     {
@@ -116,17 +116,17 @@ namespace Budgeteer
                 name = lvwBudget.SelectedItems[0].Text;
                 List<int> removables = new List<int>();
 
-                foreach (BudgetItem expense in BudgetItems.BudgetItemsList)
+                foreach (BudgetItem expense in Budget.BudgetItemsList)
                 {
                     if (expense.Name == name)
                     {
-                        removables.Add(BudgetItems.BudgetItemsList.IndexOf(expense));
+                        removables.Add(Budget.BudgetItemsList.IndexOf(expense));
                     }
                 }
 
                 foreach (int i in removables)
                 {
-                    BudgetItems.BudgetItemsList.RemoveAt(i);
+                    Budget.BudgetItemsList.RemoveAt(i);
                 }
 
                 RefreshBudgetListView();
@@ -138,7 +138,7 @@ namespace Budgeteer
             string items="", amounts="";
             string budgetName = SaveBudgetPrompt.ShowDialog();
 
-            foreach (BudgetItem item in BudgetItems.BudgetItemsList)
+            foreach (BudgetItem item in Budget.BudgetItemsList)
             {
                 if (items == "")
                 {
@@ -173,26 +173,31 @@ namespace Budgeteer
                 }
             }
 
-            Database.SaveBudget(budgetName, total,items,amounts);
+            Database.SaveBudget(budgetName, Budget.total,items,amounts);
             RefreshLoadBudgetList();
         }
 
         private void btnResetBudget_Click(object sender, EventArgs e)
         {
-            total = 0;
-            BudgetItems.BudgetItemsList.Clear();
+            Budget.total = 0;
+            Budget.BudgetItemsList.Clear();
             RefreshBudgetListView();
         }
 
         private void btnLoadBudget_Click(object sender, EventArgs e)
         {
+            if (cboBudgets.SelectedItem.ToString() != null)
+            {
+                Database.LoadBudget(cboBudgets.SelectedItem.ToString());
+                RefreshBudgetListView();
+            }
         }
 
         private void lvwBudget_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClearBudgetTextBoxes();
 
-            foreach (BudgetItem expense in BudgetItems.BudgetItemsList)
+            foreach (BudgetItem expense in Budget.BudgetItemsList)
             {
                 if (expense.Name == lvwBudget.SelectedItems[0].Text)
                 {
@@ -246,12 +251,12 @@ namespace Budgeteer
         private void RefreshBudgetListView()
         {
             lvwBudget.Items.Clear();
-            remaining = total;
-            foreach (BudgetItem expense in BudgetItems.BudgetItemsList)
+            remaining = Budget.total;
+            foreach (BudgetItem expense in Budget.BudgetItemsList)
             {
                 if (expense.Percent != -1)
                 {
-                    expense.Price = total / 100 * expense.Percent;
+                    expense.Price = Budget.total / 100 * expense.Percent;
                 }
 
                 ListViewItem lvi = lvwBudget.Items.Add(expense.Name);
