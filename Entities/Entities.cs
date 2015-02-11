@@ -12,6 +12,8 @@ namespace Entities
         public static readonly List<BudgetItem> BudgetItemsList = new List<BudgetItem>();
 
         public static double total;
+
+        public static string name;
     }
 
     public abstract class Expense

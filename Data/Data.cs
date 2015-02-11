@@ -53,6 +53,16 @@ namespace Data
             insertRow.ExecuteNonQuery(CommandBehavior.CloseConnection);
         }
 
+        public static void DeleteBudget(string name)
+        {
+            string deleteStatement = "delete from Budgets where Name = \"" + name + "\"";
+
+            SQLiteCommand delete = new SQLiteCommand(deleteStatement, connection);
+
+            connection.Open();
+            delete.ExecuteNonQuery();
+            connection.Close();
+        }
         #endregion
 
         #region queries
@@ -86,6 +96,7 @@ namespace Data
 
             while (reader.Read())
             {
+                Budget.name = reader["Name"].ToString();
                 Budget.total = Convert.ToDouble(reader["Total"]);
                 foreach (string i in reader["Items"].ToString().Split(','))
                 {

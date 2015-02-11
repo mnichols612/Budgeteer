@@ -79,6 +79,7 @@ namespace Budgeteer
                     RefreshBudgetListView();
                 }
             }
+            ClearBudgetTextBoxes();
         }
 
         private void btnEditExpense_Click(object sender, EventArgs e)
@@ -135,45 +136,67 @@ namespace Budgeteer
 
         private void btnSaveBudget_Click(object sender, EventArgs e)
         {
+            bool budgetExists = false, overWriteBudget = false;
             string items="", amounts="";
-            string budgetName = SaveBudgetPrompt.ShowDialog();
+            string budgetName = Prompts.ShowSaveDialog();
 
-            foreach (BudgetItem item in Budget.BudgetItemsList)
+            foreach (string budget in Database.RetrieveBudgets())
             {
-                if (items == "")
+                if (budget == budgetName)
                 {
-                    items += item.Name;
-                }
-                else
-                {
-                    items += "," + item.Name;
-                }
-
-                if (item.Percent == -1)
-                {
-                    if (amounts == "")
-                    {
-                        amounts += item.Price;
-                    }
-                    else
-                    {
-                        amounts += "," + item.Price;
-                    }
-                }
-                else
-                {
-                    if (amounts == "")
-                    {
-                        amounts += "p" + item.Percent;
-                    }
-                    else
-                    {
-                        amounts += ",p" + item.Percent;
-                    }
+                    budgetExists = true;
+                    overWriteBudget = Prompts.ShowOverwriteDialog();
                 }
             }
 
+            if(overWriteBudget==true)
+            {
+                Database.DeleteBudget(budgetName);
+            }
+
+            if (budgetExists == false||overWriteBudget==true)
+            {
+                foreach (BudgetItem item in Budget.BudgetItemsList)
+                {
+                    if (items == "")
+                    {
+                        items += item.Name;
+                    }
+                    else
+                    {
+                        items += "," + item.Name;
+                    }
+
+                    if (item.Percent == -1)
+                    {
+                        if (amounts == "")
+                        {
+                            amounts += item.Price;
+                        }
+                        else
+                        {
+                            amounts += "," + item.Price;
+                        }
+                    }
+                    else
+                    {
+                        if (amounts == "")
+                        {
+                            amounts += "p" + item.Percent;
+                        }
+                        else
+                        {
+                            amounts += ",p" + item.Percent;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("A budget already exists with that name");
+            }
             Database.SaveBudget(budgetName, Budget.total,items,amounts);
+            Budget.name = budgetName;
             RefreshLoadBudgetList();
         }
 
@@ -186,9 +209,25 @@ namespace Budgeteer
 
         private void btnLoadBudget_Click(object sender, EventArgs e)
         {
-            if (cboBudgets.SelectedItem.ToString() != null)
+            if (cboBudgets.SelectedItem != null)
             {
                 Database.LoadBudget(cboBudgets.SelectedItem.ToString());
+                RefreshBudgetListView();
+            }
+        }
+
+        private void btnDeleteBudget_Click(object sender, EventArgs e)
+        {
+            string name = Prompts.ShowDeleteDialog();
+            Database.DeleteBudget(name);
+            RefreshLoadBudgetList();
+
+            if (Budget.name == name)
+            {
+                lvwBudget.Items.Clear();
+            }
+            else
+            {
                 RefreshBudgetListView();
             }
         }
@@ -227,7 +266,7 @@ namespace Budgeteer
                 MessageBox.Show("Please enter a name for the expense.");
                 return "";
             }
-            else if (txtAmount.Text == "" && txtPercent.Text == "")
+            else if (txtAmount.Text == "" && txtPercent.Text == ""||(txtAmount.Text==""&&txtPercent.Text=="0"))
             {
                 MessageBox.Show("Please enter a valid amount or percent");
                 return "";
@@ -244,6 +283,11 @@ namespace Budgeteer
             }
             else
             {
+                if (percent == 0)
+                {
+                    percent = -1;
+                }
+
                 return txtExpense.Text+","+amount.ToString()+","+percent.ToString();
             }
         }
@@ -275,12 +319,15 @@ namespace Budgeteer
 
         private void RefreshLoadBudgetList()
         {
+            cboBudgets.Items.Clear();
+
             foreach (string budget in Database.RetrieveBudgets())
             {
                 cboBudgets.Items.Add(budget);
             }
-        }
 
+            cboBudgets.SelectedIndex = 0;
+        }
     }
         #endregion
 

@@ -33,5 +33,10 @@ namespace Logic
             Budget.BudgetItemsList.Clear();
             SQLite.GetBudget(name);
         }
+
+        public static void DeleteBudget(string name)
+        {
+            SQLite.DeleteBudget(name);
+        }
     }
 }
